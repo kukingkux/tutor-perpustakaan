@@ -17,6 +17,11 @@ class Book extends Model
         'isbn',
         'cover',
         'description',
-        'category'
+        'category_id'
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(BookCategory::class);
+    }
 }

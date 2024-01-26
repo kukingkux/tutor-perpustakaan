@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookCategoryController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +20,7 @@ use Illuminate\Support\Facades\Auth;
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('buku', BookController::class);
+    Route::resource('kategori', BookCategoryController::class);
     Route::get('/export-buku', [BookController::class, 'export_excel'])->name('export');
 });
 Auth::routes();

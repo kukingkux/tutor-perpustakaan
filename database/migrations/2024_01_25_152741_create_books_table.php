@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('isbn');
             $table->string('cover');
             $table->longText('description');
-            $table->string('category');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('book_categories');
             $table->timestamps();
         });
     }

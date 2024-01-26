@@ -21,7 +21,7 @@ class BookSeeder extends Seeder
             'isbn' => '978-0-04-822993-3',
             'cover' => 'https://i.redd.it/arr7alcmtgyb1.jpg',
             'description' => 'born of the Lord of Chaos is caused by frenzied flames',
-            'category' => 'Fantasy',
+            'category_id' => '1',
         ]);
     }
 }

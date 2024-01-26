@@ -30,7 +30,7 @@ class StoreBookRequest extends FormRequest
             'isbn' => 'required|string|max:255',
             'cover' => 'required',
             'description' => 'required|string',
-            'category' => 'required|string|max:255',
+            'category_id' => 'required|string|max:255',
         ];
     }
 }

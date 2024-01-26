@@ -61,7 +61,7 @@
     </div>
     <div class="mb-3">
       <label class="form-label">Deskripsi</label>
-      <input type="text" class="form-control @error('description') is-invalid @enderror" name="description">
+      <textarea type="text" class="form-control @error('description') is-invalid @enderror" name="description" style="height: 150px"></textarea>
         @error('description')
             <div class="invalid-feedback">
                 {{$message}}
@@ -70,14 +70,11 @@
     </div>
     <div class="mb-3">
       <label class="form-label">Kategori</label>
-      <select class="form-control @error('category') is-invalid @enderror" name="category">
+      <select class="form-control @error('category_id') is-invalid @enderror" name="category_id">
         <option selected disabled>-- Pilih Kategori --</option>
-        <option value="Novel">Novel</option>
-        <option value="Komik">Komik</option>
-        <option value="Biografi">Biografi</option>
-        <option value="Ensiklopedia">Ensiklopedia</option>
-        <option value="Majalah">Majalah</option>
-        <option value="Lainnya">Lainnya</option>
+        @foreach ($categories as $cat)
+            <option value="{{$cat->id}}">{{$cat->category}}</option>
+        @endforeach
       </select>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>

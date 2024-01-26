@@ -7,6 +7,7 @@ use App\Exports\BookExport;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StoreBookRequest;
+use App\Models\BookCategory;
 use RealRashid\SweetAlert\Facades\Alert as SweetAlert;
 
 class BookController extends Controller
@@ -14,14 +15,18 @@ class BookController extends Controller
     public function index()
     {
         $books = Book::all();
+        $categories = BookCategory::all();
 
-        return view('pages.book.index', compact('books'));
+
+        return view('pages.book.index', compact(['books', 'categories']));
     }
 
     public function create()
     {
-        return view('pages.book.create');
+        $categories = BookCategory::all();
+        return view('pages.book.create', compact('categories'));
     }
+
 
     public function store(StoreBookRequest $request)
     {
@@ -41,6 +46,8 @@ class BookController extends Controller
 
         $book->delete();
 
+        unlink(storage_path('app/public/' . $book['cover']));
+
         SweetAlert::success('Success', 'Data telah dihapus!');
 
         return redirect()->route('buku.index');
@@ -49,8 +56,9 @@ class BookController extends Controller
     public function edit($id)
     {
         $book = Book::findOrFail($id);
+        $categories = BookCategory::all();
 
-        return view('pages.book.edit', compact('book'));
+        return view('pages.book.edit', compact(['book', 'categories']));
     }
 
     public function update(Request $request, $id)
