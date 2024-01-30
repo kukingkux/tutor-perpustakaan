@@ -18,13 +18,13 @@ class BookController extends Controller
         $categories = BookCategory::all();
 
 
-        return view('pages.book.index', compact(['books', 'categories']));
+        return view('admin.pages.book.index', compact(['books', 'categories']));
     }
 
     public function create()
     {
         $categories = BookCategory::all();
-        return view('pages.book.create', compact('categories'));
+        return view('admin.pages.book.create', compact('categories'));
     }
 
 
@@ -58,7 +58,7 @@ class BookController extends Controller
         $book = Book::findOrFail($id);
         $categories = BookCategory::all();
 
-        return view('pages.book.edit', compact(['book', 'categories']));
+        return view('admin.pages.book.edit', compact(['book', 'categories']));
     }
 
     public function update(Request $request, $id)

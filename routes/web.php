@@ -17,10 +17,16 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::group(['middleware' => ['auth']], function() {
+Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function() {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('buku', BookController::class);
     Route::resource('kategori', BookCategoryController::class);
     Route::get('/export-buku', [BookController::class, 'export_excel'])->name('export');
+});
+
+Route::group(['middleware' => ['auth']], function(){
+   Route::get('/', function(){
+    return view('index');
+   });
 });
 Auth::routes();
