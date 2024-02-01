@@ -29,4 +29,10 @@ Route::group(['middleware' => ['auth']], function(){
     return view('index');
    });
 });
+
+Route::group(['middleware' => ['auth'], 'prefix' => 'katalog'], function(){
+   Route::get('/', function(){
+    return view('pages.katalog');
+   });
+});
 Auth::routes();

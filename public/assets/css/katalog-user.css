@@ -1,0 +1,15 @@
+.section-left {
+    flex: 3
+}
+
+.section-right {
+    flex: 9
+}
+
+.btn-cari {
+    max-width: 30% !important;
+}
+
+.gap-2 {
+    gap: 32px;
+}

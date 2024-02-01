@@ -3,3 +3,7 @@
     border-color: #c2a792 !important;
     border-radius: 8px !important;
 }
+
+.gap {
+    gap: 16px;
+}
