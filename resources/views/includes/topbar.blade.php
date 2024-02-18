@@ -15,7 +15,7 @@
         </div>
         <div class="d-flex">
             <div class="navbar-nav font-weight-bold gap">
-                <a class="nav-link active" href="#">Masuk <span class="sr-only">(current)</span></a>
+                <a class="nav-link active" href="/login">Masuk <span class="sr-only">(current)</span></a>
                 <button type="button" class="btn btn-primary px-4">Daftar</button>
             </div>
         </div>

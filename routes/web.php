@@ -24,11 +24,11 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function() {
     Route::get('/export-buku', [BookController::class, 'export_excel'])->name('export');
 });
 
-Route::group(['middleware' => ['auth']], function(){
+// Route::group(['middleware' => ['auth']], function(){
    Route::get('/', function(){
     return view('index');
    });
-});
+// });
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'katalog'], function(){
    Route::get('/', function(){

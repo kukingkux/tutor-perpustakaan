@@ -24,6 +24,14 @@
     </div>
 
     <div class="contents d-flex gap">
+        @foreach($books as $b)
+        <div class="content">
+            <p class="font-weight-bold">{{$b->title}}</p>
+            <img src="{{asset('storage/' . $b->cover)}}" alt="vue.js" class="px-5 py-3">
+            <p class="font-weight-bold">{{$b->author}}</p>
+            <p class="text-reset">{{$b->year}}</p>
+        </div>
+        @endforeach
         <div class="content">
             <p class="font-weight-bold"><span>Vue JS: </span>Sentuhan Ajaib untuk Antarmuka Pengguna yang Lebih Hidup!✨✨</p>
             <img src="{{asset('assets/img/vue-js.svg')}}" alt="vue.js" class="px-5 py-3">
