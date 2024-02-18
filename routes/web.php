@@ -20,6 +20,8 @@ use App\Http\Controllers\BookCategoryController;
 |
 */
 
+// ADMIN DASHBOARD
+
 Route::group(['middleware' => ['auth', 'role:admin'], 'prefix' => 'admin'], function() {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('buku', BookController::class);
@@ -27,6 +29,8 @@ Route::group(['middleware' => ['auth', 'role:admin'], 'prefix' => 'admin'], func
     Route::get('/export-buku', [BookController::class, 'export_excel'])->name('export');
 });
 
+
+// USER DASHBOARD
 // Route::group(['middleware' => ['auth']], function(){
    Route::get('/', function(){
     return view('index');
@@ -43,6 +47,7 @@ Route::group(['prefix' => 'katalog'], function(){
 });
 Auth::routes();
 Route::get('logout', [LoginController::class, 'logout']);
+
 
 // Google
 Route::prefix('google')->name('google.')->group( function()
