@@ -170,7 +170,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
-
+        Spatie\Permission\PermissionServiceProvider::class,
     ])->toArray(),
 
     /*

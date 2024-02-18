@@ -14,10 +14,17 @@
             </div>
         </div>
         <div class="d-flex">
+            @guest
             <div class="navbar-nav font-weight-bold gap">
                 <a class="nav-link active" href="/login">Masuk <span class="sr-only">(current)</span></a>
                 <button type="button" class="btn btn-primary px-4">Daftar</button>
             </div>
+            @endguest
+            @auth
+            <div class="navbar-nav font-weight-bold gap">
+                <a class="nav-link active" href="/logout">Logout <span class="sr-only">(current)</span></a>
+            </div>
+            @endauth
         </div>
     </div>
 </nav>

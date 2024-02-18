@@ -33,11 +33,15 @@
         </div>
         <div class="contents d-flex gap section-right">
             @foreach($books as $b)
-            <div class="content">
+            <div class="card content">
+
+                <img src="{{asset('storage/' . $b->cover)}}" alt="vue.js" class="card-img-top">
+                <a href="{{route('bookdetails', $b->id)}}" class="text-reset">
                 <p class="font-weight-bold">{{$b->title}}</p>
-                <img src="{{asset('storage/' . $b->cover)}}" alt="vue.js" class="px-5 py-3">
+                </a>
                 <p class="font-weight-bold">{{$b->author}}</p>
                 <p class="text-reset">{{$b->year}}</p>
+
             </div>
             @endforeach
         </div>

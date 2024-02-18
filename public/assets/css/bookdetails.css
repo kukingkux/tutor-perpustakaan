@@ -1,0 +1,11 @@
+.side-content {
+    img{
+        width: 250px;
+        height: auto;
+    }
+}
+
+.img-modal img {
+    max-height: 192px;
+    width: auto;
+}

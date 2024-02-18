@@ -1,10 +1,13 @@
 <?php
 
-use App\Http\Controllers\BookCategoryController;
-use App\Http\Controllers\BookController;
-use App\Http\Controllers\DashboardController;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\KatalogController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\BookCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +20,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function() {
+Route::group(['middleware' => ['auth', 'role:admin'], 'prefix' => 'admin'], function() {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('buku', BookController::class);
     Route::resource('kategori', BookCategoryController::class);
@@ -27,12 +30,23 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function() {
 // Route::group(['middleware' => ['auth']], function(){
    Route::get('/', function(){
     return view('index');
-   });
+   })->name('home');
 // });
 
-Route::group(['middleware' => ['auth'], 'prefix' => 'katalog'], function(){
+Route::group(['prefix' => 'katalog'], function(){
    Route::get('/', function(){
     return view('pages.katalog');
    });
+   Route::group(['prefix' => 'bookid'], function(){
+    Route::get('/{id}', [KatalogController::class, 'index'])->name('bookdetails');
+   });
 });
 Auth::routes();
+Route::get('logout', [LoginController::class, 'logout']);
+
+// Google
+Route::prefix('google')->name('google.')->group( function()
+{
+    Route::get('login', [GoogleController::class, 'loginWithGoogle'])->name('login');
+    Route::any('callback', [GoogleController::class, 'callbackFromGoogle'])->name('callback');
+});

@@ -70,12 +70,14 @@
     </div>
     <div class="mb-3">
       <label class="form-label">Kategori</label>
-      <select class="form-control @error('category_id') is-invalid @enderror" name="category_id">
-        <option selected disabled>-- Pilih Kategori --</option>
-        @foreach ($categories as $cat)
-            <option value="{{$cat->id}}">{{$cat->category}}</option>
-        @endforeach
-      </select>
+      <div class="mb-3  me-4 ms-4">
+        <label class="form-label">Tanggal</label>
+        <input type="date" class="form-control" name="tanggal" required>
+    </div>
+    <div class="mb-3  me-4 ms-4">
+        <label class="form-label">Tanggal</label>
+        <input type="date" class="form-control" name="tanggal" required>
+    </div>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 
